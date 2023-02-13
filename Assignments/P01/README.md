@@ -1,6 +1,6 @@
 # 2048
 
-## T.L.N.S.thivya,Divya Podila
+## Divya Podila ,T.L.N.S.thivya
 
 ### Description:
 
