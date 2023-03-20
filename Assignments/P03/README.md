@@ -22,8 +22,8 @@ Added gravity setting.
  
 |   #   | Folder Link                                            | Assignment Description                                                            |
 | :---: | -------------------------------------------------------| ----------------------------------------------------------------------------------|
-|   1   |[projectilegame.py](/Assignments/P03/Projectilegame.py) |This code is attempting to build a game of 2D projectile using the Pygame library. |
-|   2   |[GameImages](/Assignments/P03/All_Images)               |Sprites of the players (player1 &@) used for Animation (During collision)          |
+|   1   |[projectilegame.py](/Assignments/P03/projectilegame.py) |This code is attempting to build a game of 2D projectile using the Pygame library. |
+|   2   |[GameImages](/Assignments/P03/All_Images)               |Sprites of the players (player1 & player2) used for Animation (During collision)          |
 
 
 ### Instructions
