@@ -1,3 +1,7 @@
+# 2 player Samurai Game 
+# Divya Podila
+# M20315833
+
 import pygame
 from pygame import mixer
 import math
@@ -10,7 +14,7 @@ pygame.init()
 WIDTH = 1200
 HEIGHT = 800
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
-pygame.display.set_caption('SHOOT!!!!!!!!!')
+pygame.display.set_caption('Samurai GO SHOOT!!!!!!!!!')
 timer = pygame.time.Clock()
 fps = 60
 font = pygame.font.SysFont('comicsansms.ttf', 24)
@@ -61,6 +65,12 @@ player1_img_up = pygame.image.load("C:/Users/divya/2Dgaming/Multiplayergame/All_
 
 #gamestartplayer1movement
 player2_img_up = pygame.image.load("C:/Users/divya/2Dgaming/Multiplayergame/All_images/player2_newese_new.png")
+
+#throwplayer1movement
+throwplayer1_img = pygame.image.load("C:/Users/divya/2Dgaming/Multiplayergame/All_images/throw_player1.png")
+
+#throwplayer2movement
+throwplayer2_img = pygame.image.load("C:/Users/divya/2Dgaming/Multiplayergame/All_images/throw_player2.png")
 
 #wall hit 
 wallhit_img = pygame.image.load("C:/Users/divya/2Dgaming/Multiplayergame/All_images/wallhit.png").convert()
@@ -113,8 +123,6 @@ class Environment():
         font = pygame.font.SysFont('comicsansms.ttf', 24)
         Player1_text = font.render(f'<<PLAYER 1>> {Player01}', True, 'RED')
         screen.blit(Player1_text, (40, 10))
-        #Velocity1_text =font.render(f'Velocity: {vox}', True,'White')
-        #screen.blit(Velocity1_text, (10, 40))
         angle1_Text =font.render(f'Angle: {-theta}',True, 'white')
         screen.blit(angle1_Text, (10, 50))
         pass
@@ -124,8 +132,6 @@ class Environment():
         font = pygame.font.SysFont('comicsansms.ttf', 24)
         Player2_text = font.render(f'<<PLAYER 2>> {Player02}', True, 'RED')
         screen.blit(Player2_text, (1050, 10))
-        #Velocity2_text =font.render(f'Velocity: {voy}', True,'White')
-        #screen.blit(Velocity2_text, (1010, 40))
         angle2_Text =font.render(f'Angle: {-theta}', True, 'white')
         screen.blit(angle2_Text, (1010, 50))
         pass
@@ -165,7 +171,6 @@ class Environment():
         
         if angle > 90:
             backwards = True
-        print(backwards)
         while (Yo <= 580):
          
          ay = (-gravity)
@@ -198,6 +203,29 @@ def resetboard():
  screen.blit(player2_img_up,[1000,470])
  screen.blit(brickload,[600,365])
  Environment.draw_board1()
+
+
+def resetboard11():
+ screen.blit(bg_img,[0,0])
+ screen.blit(player1_img_up,[10,470])
+ screen.blit(player2_img_up,[1000,470])
+ screen.blit(brickload,[600,365])
+ Environment.draw_board2()
+ 
+ 
+ #resetboardforthrow1
+def resetboardthrow1():
+ screen.blit(bg_img,[0,0])
+ screen.blit(player2_img_up,[1000,470])
+ screen.blit(brickload,[600,365])
+ Environment.draw_board1()
+
+
+#resetboardforthrow2
+def resetboardthrow2():
+ screen.blit(bg_img,[0,0])
+ screen.blit(player1_img_up,[10,470])
+ screen.blit(brickload,[600,365])
  Environment.draw_board2()
 
  #resetboardforplayer2
@@ -206,7 +234,6 @@ def resetboard2():
  screen.blit(spriteload1,[10,470])
  screen.blit(brickload,[600,365])
  Environment.draw_board1()
- Environment.draw_board2()
 
 #resetboardafter player2dies
 def resetboard3():
@@ -215,7 +242,6 @@ def resetboard3():
  screen.blit(brickload,[600,365])
  screen.blit(killplayer2_img,[x,y])
  Environment.draw_board1()
- Environment.draw_board2()
 
 #resetboardonesecondbeforekill
 #resetboardafter player2dies
@@ -224,7 +250,6 @@ def resetboard5():
  screen.blit(spriteload1,[10,470])
  screen.blit(brickload,[600,365])
  Environment.draw_board1()
- Environment.draw_board2()
  screen.blit(beforedie2_img,[1000,470])
  pygame.display.flip()
  time.sleep(0.5)
@@ -235,13 +260,26 @@ def resetboard6():
  screen.blit(bg_img,[0,0])
  screen.blit(spriteload2,[1000,470])
  screen.blit(brickload,[600,365])
- Environment.draw_board1()
  Environment.draw_board2()
  screen.blit(beforedie1_img,[10,470])
  pygame.display.flip()
  time.sleep(0.5)
  resetboard4()
  
+ #player1_throw
+def player1_throw():
+ resetboardthrow1()
+ screen.blit(throwplayer1_img,[10,470])
+ pygame.display.flip()
+ time.sleep(1)
+ 
+#player2_throw
+def player2_throw():
+ resetboardthrow2()
+ screen.blit(throwplayer2_img,[1000,470])
+ pygame.display.flip()
+ time.sleep(1)
+    
 
 #resetboardafter player1dies
 def resetboard4():
@@ -249,14 +287,22 @@ def resetboard4():
  screen.blit(spriteload2,[1000,470])
  screen.blit(brickload,[600,365])
  screen.blit(killplayer1_img,[x,y])
- Environment.draw_board1()
  Environment.draw_board2()
 
-def resetboard_wall():
+def resetboard_wall1():
     screen.blit(bg_img,[0,0])
     screen.blit(player1_img_up,[10,470])
     screen.blit(player2_img_up,[1000,470])
     Environment.draw_board1()
+    screen.blit(wallhit_img,[600,365])
+    pygame.display.flip()
+    time.sleep(0.5)
+    resetboard()
+
+def resetboard_wall2():
+    screen.blit(bg_img,[0,0])
+    screen.blit(player1_img_up,[10,470])
+    screen.blit(player2_img_up,[1000,470])
     Environment.draw_board2()
     screen.blit(wallhit_img,[600,365])
     pygame.display.flip()
@@ -268,7 +314,6 @@ def resetboard_ground(x1,y1):
     screen.blit(player1_img_up,[10,470])
     screen.blit(player2_img_up,[1000,470])
     Environment.draw_board1()
-    Environment.draw_board2()
     screen.blit(brickload,[600,365])
     screen.blit(groundhit_img,[x1,y1])
     pygame.display.flip()
@@ -279,7 +324,6 @@ def resetboard_ground2(x2,y2):
     screen.blit(bg_img,[0,0])
     screen.blit(player1_img_up,[10,470])
     screen.blit(player2_img_up,[1000,470])
-    Environment.draw_board1()
     Environment.draw_board2()
     screen.blit(brickload,[600,365])
     screen.blit(groundhit_img,[x2,y2])
@@ -318,8 +362,8 @@ resetboard()
 pygame.draw.line(screen,lines['linecolor'],startpos1,endpos1,width)
 
 while run:
+    
     for event in pygame.event.get():
-        
         if event.type == pygame.QUIT:
             run = False
         if game_over== True: 
@@ -355,7 +399,7 @@ while run:
         else:
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
-                    resetboard()
+                    resetboard11()
                     if -90 < (theta) <= 0:
                         theta=(theta)-15
                         env.drawline2(theta,startpos2)
@@ -365,7 +409,7 @@ while run:
                 
             if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_s:
-                        resetboard()
+                        resetboard11()
                         if theta <= -15:
                            theta=(theta)+15
                            env.drawline2(theta,startpos2)  
@@ -377,8 +421,9 @@ while run:
           if event.key == pygame.K_RETURN:
             walltouched,killplayer2,groundtouch, killplayer1 = False,False,False,False
             if(player1_turn== True):
-                    xlist,ylist = env.position_points(120,510,-theta,intial_velocity =95)
                     
+                    xlist,ylist = env.position_points(120,510,-theta,intial_velocity =95)
+                    player1_throw()
                     for i in range(len(xlist)):
                        x,y = xlist[i],ylist[i]
                        
@@ -394,35 +439,24 @@ while run:
                         
                        if x >= 570 and x <= 620 and y >= 300:
                             walltouched = True
-                            resetboard_wall()
+                            resetboard_wall1()
                             break
                        elif x>960 and x < 1200 and y>470: 
                             killplayer2 = True
-                            
                             pygame.mixer.Channel(2).play(pygame.mixer.Sound("C:/Users/divya/2Dgaming/Multiplayergame/All_images/mandies.mp3"))
-                               
                             resetboard2()
-                            
                             resetboard5()
                             screen.blit(killplayer2_img,[x,y])
                             victory1()
-                            
                             game_over=True
-                            
                             break
-                            
-
-                        
+   
                        elif y==ylist[-1] and x<960:
                            
                             groundtouch=True
-                            print(x,y)
                             pygame.mixer.Channel(3).play(pygame.mixer.Sound("C:/Users/divya/2Dgaming/Multiplayergame/All_images/explode.mp3"))
                             resetboard_ground(x,y)    
                             break
-                       if y==ylist[-1]:
-                           print(x,y,'hari')
-                    print(walltouched,killplayer2,groundtouch)
                            
                     player1_turn = False  
                     if killplayer2 == False:
@@ -431,7 +465,8 @@ while run:
             else:
                
                 pygame.display.update()
-                xlist,ylist = env.position_points(1000,500,theta -180 ,intial_velocity =95)         
+                xlist,ylist = env.position_points(1000,500,theta -180 ,intial_velocity =95)  
+                player2_throw()       
                 for i in range(len(xlist)):
                            x,y = xlist[i],ylist[i]
                            screen.blit(sword_img,[x,y])
@@ -440,13 +475,13 @@ while run:
                         
                            pygame.display.flip()
                            time.sleep(0.04)
-                           resetboard()
+                           resetboard11()
                            if x > 1190 or x < 16 or y > 790 or y < 16:
                                 break
 
                            if x >= 570 and x <= 620 and y >= 300:
                                 walltouched = True
-                                resetboard_wall()
+                                resetboard_wall2()
                                 break
                            elif x > 5 and x < 140 and y > 470: 
                                 print("rasd",1200 - radius1 - radius2 - 30)
@@ -469,9 +504,7 @@ while run:
                                 #Set preferred volume
                                 resetboard_ground2(x,y)
                                 
-                                break
-                           if y==ylist[-1]:
-                            print(x,y,'hari')  
+                                break 
                 
                 player1_turn = True 
                  
