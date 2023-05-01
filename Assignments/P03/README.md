@@ -24,7 +24,7 @@ Added gravity setting.
 |   #   | Folder Link                                            | Assignment Description                                                            |
 | :---: | -------------------------------------------------------| ----------------------------------------------------------------------------------|
 |   1   |[Playersinfo.py](/Assignments/P03/Playersinfo.py)       |This code is attempting to build a game of 2D projectile using the Pygame library. |
-|   2   |[asteroids.py](/Assignments/P03/asteroids.py)           |Sprites of the players (player1 & player2) used for Animation (During collision)   |
+|   2   |[astroids.py](/Assignments/P03/astroids.py)           |Sprites of the players (player1 & player2) used for Animation (During collision)   |
 |   3   |[background.py](/Assignments/P03/background.py)         |Sprites of the players (player1 & player2) used for Animation (During collision)   |
 |   4  |[comms.py](/Assignments/P03/comms.py)                    |Sprites of the players (player1 & player2) used for Animation (During collision)   |
 |   5   |[gameClass.py](/Assignments/P03/gameClass.py)           |Sprites of the players (player1 & player2) used for Animation (During collision)   |
